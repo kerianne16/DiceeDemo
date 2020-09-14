@@ -10,7 +10,43 @@ import SwiftUI
 
 struct ContentView: View {
     var body: some View {
-        Text("Hello, World!")
+        //create overlay stack
+        ZStack {
+        Image("background") // add image
+            .resizable() // resize image
+            .edgesIgnoringSafeArea(/*@START_MENU_TOKEN@*/.all/*@END_MENU_TOKEN@*/) // allow edges to go full screen
+            VStack {
+                Image("diceeLogo")
+                Spacer()
+                HStack {
+                    DiceView(n: 1)
+                    DiceView(n: 1)
+                }
+                .padding(.horizontal)
+                Spacer()
+                Button(action: {
+                    
+                }) {
+                    Text("Roll")
+                        .font(.system(size: 50))
+                        .fontWeight(.heavy)
+                        .foregroundColor(.white)
+                        .padding(.horizontal)
+                }
+                .background(Color.red)
+            }
+        }
+    }
+}
+
+struct DiceView: View {
+    
+    let n: Int //do not want hardcoded
+    var body: some View {
+        Image("dice\(n)")
+            .resizable()
+            .aspectRatio(1, contentMode: .fit)
+        .padding()
     }
 }
 
@@ -19,3 +55,5 @@ struct ContentView_Previews: PreviewProvider {
         ContentView()
     }
 }
+
+
